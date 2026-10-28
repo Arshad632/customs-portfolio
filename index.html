@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Prince: customs and trade compliance. HS classification, valuation, duty and landed cost, duty drawback, bonded regimes and customs disputes.">
+<title>Prince · Customs & Trade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a customs officer's case file. Pinned header with three tabs; work samples shown as documents. */
+:root {
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --ink: #141c27;
+  --muted: #586374;
+  --line: #d8dee7;
+  --accent: #1d4f80;
+  --accent-soft: #e2ebf5;
+  --signal: #9a5b12;
+  --signal-soft: #f5ead9;
+  --shadow: 0 1px 2px rgba(20, 28, 39, .06), 0 8px 24px rgba(20, 28, 39, .06);
+  --display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --step--1: .82rem; --step-0: 1rem; --step-1: 1.2rem; --step-2: 1.55rem; --step-3: 2.1rem;
+  --step-4: clamp(2.2rem, 5vw, 3.2rem);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e141c; --surface: #161f2a; --ink: #e5ebf2; --muted: #9aa7b8; --line: #283545;
+    --accent: #79aee3; --accent-soft: #1b2b3d; --signal: #e3a65e; --signal-soft: #382a19;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e141c; --surface: #161f2a; --ink: #e5ebf2; --muted: #9aa7b8; --line: #283545;
+  --accent: #79aee3; --accent-soft: #1b2b3d; --signal: #e3a65e; --signal-soft: #382a19;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: var(--step-0)/1.6 var(--body); }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+[hidden] { display: none !important; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+.top { position: sticky; top: 0; z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 12px; }
+.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand b { font-family: var(--display); font-size: var(--step-2); letter-spacing: -.01em; }
+.brand span { color: var(--muted); font-size: var(--step--1); }
+.tabs { display: flex; gap: 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 4px; flex-wrap: wrap; }
+.tabs button { font: 500 var(--step--1) var(--body); color: var(--muted); background: none; border: 0; padding: 8px 14px; border-radius: 7px; cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+.tabs button:hover { color: var(--ink); }
+
+main .wrap { padding-block: 40px 64px; }
+section.page { display: grid; gap: 56px; }
+.hero { display: grid; gap: 18px; max-width: 760px; }
+.eyebrow { font: 500 var(--step--1) var(--mono); color: var(--accent); letter-spacing: .06em; text-transform: uppercase; }
+.hero h1 { font-size: var(--step-4); letter-spacing: -.02em; }
+.hero p { color: var(--muted); font-size: var(--step-1); max-width: 62ch; }
+.block { display: grid; gap: 20px; }
+.block-head { display: grid; gap: 6px; max-width: 65ch; }
+.block-head h2 { font-size: var(--step-3); letter-spacing: -.015em; }
+.block-head p { color: var(--muted); }
+
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.figure { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; gap: 4px; }
+.figure b { font: 600 var(--step-2) var(--display); letter-spacing: -.01em; }
+.figure span { color: var(--muted); font-size: var(--step--1); }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 10px; align-content: start; }
+.card h3 { font-size: var(--step-1); }
+.card p { color: var(--muted); }
+.tag { justify-self: start; font: 500 var(--step--1) var(--mono); color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 6px; }
+
+.doc { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; }
+.doc-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; padding: 14px 20px; border-bottom: 1px solid var(--line); background: var(--accent-soft); }
+.doc-head h3 { font-size: var(--step-1); }
+.sample { font: 500 var(--step--1) var(--mono); color: var(--signal); background: var(--signal-soft); padding: 2px 8px; border-radius: 6px; }
+.doc-body { padding: 20px; display: grid; gap: 14px; }
+.doc-body ol { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+.kv { display: grid; grid-template-columns: minmax(120px, 200px) 1fr; gap: 6px 16px; }
+.kv dt { color: var(--muted); font-size: var(--step--1); }
+.kv dd { margin: 0; }
+.verdict { border-left: 3px solid var(--accent); padding: 10px 14px; background: var(--accent-soft); border-radius: 0 8px 8px 0; }
+.table-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: var(--step--1); }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; color: var(--muted); white-space: nowrap; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); }
+tr.total td { font-weight: 600; border-top: 2px solid var(--ink); }
+.note { color: var(--muted); font-size: var(--step--1); }
+
+.steps { display: grid; gap: 12px; counter-reset: s; }
+.step { display: grid; grid-template-columns: 40px 1fr; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.step::before { counter-increment: s; content: counter(s); font: 600 var(--step-1) var(--display); color: var(--accent); }
+.step h3 { font-size: var(--step-0); margin-bottom: 4px; }
+.step p { color: var(--muted); }
+
+.cta { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.cta p { color: var(--muted); max-width: 55ch; }
+.btn { display: inline-block; background: var(--accent); color: var(--surface); text-decoration: none; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
+footer { color: var(--muted); font-size: var(--step--1); padding-block: 24px 40px; }
+@media (max-width: 560px) { .kv { grid-template-columns: 1fr; } .kv dd { margin-bottom: 8px; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><b>Prince</b><span>Customs &amp; trade compliance</span></div>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button role="tab" id="t-services" aria-controls="services" aria-selected="true">What I do</button>
+      <button role="tab" id="t-work" aria-controls="work" aria-selected="false">Work samples</button>
+      <button role="tab" id="t-process" aria-controls="process" aria-selected="false">How I work</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<section class="page" id="services" role="tabpanel" aria-labelledby="t-services">
+  <div class="hero">
+    <span class="eyebrow">10 years with Pakistan Customs</span>
+    <h1>I know how customs reads your shipment, because that was my job.</h1>
+    <p>I classified goods, assessed value, cleared imports and exports, ran duty drawback and audited bonded regimes. Now I help businesses get the code, the duty and the paperwork right before the border does it for them.</p>
+  </div>
+
+  <div class="figures">
+    <div class="figure"><b>10 years</b><span>Pakistan Customs, imports and exports</span></div>
+    <div class="figure"><b>HS system</b><span>Classification with GRI reasoning</span></div>
+    <div class="figure"><b>4 regimes</b><span>Manufacturing Bond, EOU, DTRE, EFS</span></div>
+    <div class="figure"><b>Every forum</b><span>Cases from quasi-judicial to the courts</span></div>
+  </div>
+
+  <div class="block">
+    <div class="block-head">
+      <h2>What I can do for you</h2>
+      <p>The HS system is shared by more than 200 countries, so classification and valuation skills travel with your goods.</p>
+    </div>
+    <div class="cards">
+      <article class="card"><span class="tag">Classification</span><h3>HS codes and tariffs</h3><p>Your products classified under the HS system, with the GRI, section and chapter note reasoning written down, and the tariff rate for each market.</p></article>
+      <article class="card"><span class="tag">Valuation</span><h3>Customs value and landed cost</h3><p>What goes into the customs value, what duties and taxes it triggers, and what each unit really costs you once it lands.</p></article>
+      <article class="card"><span class="tag">Refunds</span><h3>Duty drawback and refunds</h3><p>Drawback and refund claims prepared or reviewed against the duties paid on inputs and the export evidence.</p></article>
+      <article class="card"><span class="tag">Regimes</span><h3>Bonded and export schemes</h3><p>Manufacturing Bonds, Export Oriented Units, the Duty and Tax Remission Scheme and the Export Facilitation Scheme: setup checks and audits.</p></article>
+      <article class="card"><span class="tag">Compliance</span><h3>Restrictions and prohibitions</h3><p>Checks on whether your goods are restricted or prohibited, and which permits or evidence clear them.</p></article>
+      <article class="card"><span class="tag">Disputes</span><h3>Assessments and appeals</h3><p>A review of a disputed classification or valuation, and help building the evidence for an appeal.</p></article>
+    </div>
+  </div>
+
+  <div class="cta">
+    <div><h2 style="font-size:var(--step-2)">Send me your product list or shipment</h2><p>I'll tell you where the risk is: the code, the value, the duty or the paperwork.</p></div>
+    <a class="btn" href="https://www.upwork.com/freelancers/~01843dd305df338731" target="_blank" rel="noopener">Hire me on Upwork</a>
+  </div>
+</section>
+
+<section class="page" id="work" role="tabpanel" aria-labelledby="t-work" hidden>
+  <div class="hero">
+    <span class="eyebrow">Work samples</span>
+    <h1>What you get back from me.</h1>
+    <p>These samples use made-up products and figures, so no client data is shown. They show the format and the depth of every deliverable.</p>
+  </div>
+
+  <article class="doc">
+    <div class="doc-head"><h3>Classification memo</h3><span class="sample">Sample</span></div>
+    <div class="doc-body">
+      <dl class="kv">
+        <dt>Product</dt><dd>Double-wall stainless steel bottle, 750 ml, vacuum between the walls, screw lid</dd>
+        <dt>Candidate headings</dt><dd>7323 (table and household articles of iron or steel) vs 9617 (vacuum flasks and other vacuum vessels, complete)</dd>
+      </dl>
+      <ol>
+        <li><b>GRI 1:</b> classification starts from the heading texts and the section and chapter notes.</li>
+        <li>Heading 9617 names the product by what it is: a complete vacuum vessel. A heading that describes the article specifically wins over one that describes it by material.</li>
+        <li>The notes to Section XV exclude articles of Chapter 96, so heading 7323 can't take it.</li>
+        <li>The vacuum layer is the deciding fact. A single-wall or non-vacuum steel bottle would go to 7323 instead, so the supplier spec sheet confirming the vacuum is kept on file.</li>
+      </ol>
+      <p class="verdict"><b>Result:</b> HS 9617.00. Evidence held: supplier spec sheet and product photos showing the vacuum construction.</p>
+    </div>
+  </article>
+
+  <article class="doc">
+    <div class="doc-head"><h3>Landed cost sheet</h3><span class="sample">Sample, illustrative figures</span></div>
+    <div class="doc-body">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Line</th><th>Basis</th><th class="num">USD</th></tr></thead>
+          <tbody>
+            <tr><td>Goods value (FOB)</td><td>Supplier invoice</td><td class="num">10,000.00</td></tr>
+            <tr><td>Freight</td><td>Forwarder quote</td><td class="num">800.00</td></tr>
+            <tr><td>Insurance</td><td>0.5% of FOB + freight</td><td class="num">54.00</td></tr>
+            <tr><td>Customs value (CIF)</td><td>Destination values on CIF</td><td class="num">10,854.00</td></tr>
+            <tr><td>Import duty</td><td>Example rate 5% of CIF</td><td class="num">542.70</td></tr>
+            <tr><td>Import VAT</td><td>Example 20% of CIF + duty, reclaimable if registered</td><td class="num">2,279.34</td></tr>
+            <tr><td>Broker and port fees</td><td>Broker quote</td><td class="num">150.00</td></tr>
+            <tr class="total"><td>Landed cost (excl. reclaimable VAT)</td><td>CIF + duty + fees</td><td class="num">11,546.70</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Real sheets use the actual tariff rate for your HS code and market, and show the cost per unit so you can set your price.</p>
+    </div>
+  </article>
+
+  <article class="doc">
+    <div class="doc-head"><h3>Obligations matrix</h3><span class="sample">Sample</span></div>
+    <div class="doc-body">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Product</th><th>HS code</th><th>Origin</th><th>Market</th><th>Low-value rule</th><th>Who collects tax</th><th>Who pays duty</th><th>Evidence</th><th>Risk</th></tr></thead>
+          <tbody>
+            <tr><td>Vacuum bottle</td><td>9617.00</td><td>China</td><td>UK</td><td>Orders of £135 or less: VAT taken at checkout, no duty</td><td>Seller, at checkout</td><td>Above £135: seller if sold DDP</td><td>Spec sheet</td><td>Low</td></tr>
+            <tr><td>Vacuum bottle</td><td>9617.00</td><td>China</td><td>Australia</td><td>Orders of A$1,000 or less: GST taken at checkout, no duty</td><td>Seller, at checkout</td><td>Above A$1,000: buyer if sold DAP</td><td>Spec sheet</td><td>Medium: check the carrier doesn't charge GST a second time</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">One row per product and market. Every risk comes with the fix and the evidence to keep.</p>
+    </div>
+  </article>
+</section>
+
+<section class="page" id="process" role="tabpanel" aria-labelledby="t-process" hidden>
+  <div class="hero">
+    <span class="eyebrow">How I work</span>
+    <h1>Facts first, then the code, then the money.</h1>
+    <p>The same order customs follows when it checks your goods. Every conclusion comes with the rule and the evidence behind it.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div><h3>Get the product facts</h3><p>Material, function, use and specs, from your supplier documents. Most wrong codes start with missing facts.</p></div></div>
+    <div class="step"><div><h3>Classify with the GRIs</h3><p>The rules in order, then section and chapter notes, then each market's national tariff line. The reasoning is written down for every code.</p></div></div>
+    <div class="step"><div><h3>Check origin and value</h3><p>Where the goods count as made, any trade deal preference and its proof, and what goes into the customs value on each market's basis.</p></div></div>
+    <div class="step"><div><h3>Work out who pays what</h3><p>Duty, import VAT or GST, low-value rules, DDP or DAP, and who is the importer of record.</p></div></div>
+    <div class="step"><div><h3>Hand over clear findings</h3><p>A short report: what's right, what's wrong, the fix, and the evidence to keep in case customs asks.</p></div></div>
+  </div>
+  <div class="cta">
+    <div><h2 style="font-size:var(--step-2)">Have a shipment or product list?</h2><p>Send it over and I'll start with the riskiest items first.</p></div>
+    <a class="btn" href="https://www.upwork.com/freelancers/~01843dd305df338731" target="_blank" rel="noopener">Hire me on Upwork</a>
+  </div>
+</section>
+
+</div>
+</main>
+<footer><div class="wrap">Samples use made-up products and figures. No client data is shown on this page.</div></footer>
+
+<script>
+const tabs = [...document.querySelectorAll('[role="tab"]')];
+const pages = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
+function show(id, push) {
+  if (!pages.some(p => p.id === id)) id = 'services';
+  tabs.forEach(t => t.setAttribute('aria-selected', String(t.getAttribute('aria-controls') === id)));
+  pages.forEach(p => { p.hidden = p.id !== id; });
+  if (push) history.replaceState(null, '', '#' + id);
+  window.scrollTo({ top: 0 });
+}
+tabs.forEach(t => t.addEventListener('click', () => show(t.getAttribute('aria-controls'), true)));
+window.addEventListener('hashchange', () => show(location.hash.slice(1), false));
+show(location.hash.slice(1), false);
+</script>
+</body>
+</html>
